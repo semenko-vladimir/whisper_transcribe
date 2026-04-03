@@ -1,0 +1,41 @@
+providers:
+  - name: gemini_flash_primary
+    provider: gemini
+    api_key_env: GEMINI_API_KEY
+    model: gemini-2.5-flash
+    temperature: 0.2
+    top_p: 0.9
+    max_output_tokens: 4096
+    timeout_seconds: 90
+    max_retries: 2
+    priority: 1
+
+  - name: gemini_flash_lite_backup
+    provider: gemini
+    api_key_env: GEMINI_API_KEY
+    model: gemini-2.5-flash-lite
+    temperature: 0.2
+    top_p: 0.9
+    max_output_tokens: 3072
+    timeout_seconds: 60
+    max_retries: 2
+    priority: 2
+
+  - name: openrouter_free_backup
+    provider: openai_compatible
+    api_key_env: OPENROUTER_API_KEY
+    base_url: https://openrouter.ai/api/v1
+    model: openrouter/free
+    temperature: 0.2
+    top_p: 0.9
+    max_output_tokens: 3072
+    timeout_seconds: 90
+    max_retries: 2
+    priority: 3
+
+app:
+  chunk_target_chars: 10000
+  chunk_overlap_chars: 800
+  log_level: INFO
+  intermediate_json: true
+  save_intermediate_files: true

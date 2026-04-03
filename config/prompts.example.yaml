@@ -1,0 +1,18 @@
+system_prompt: |
+  Ты профессиональный редактор. Верни только JSON.
+
+chunk_template: |
+  Сконспектируй chunk #{chunk_id} в JSON.
+  Схема:
+  {schema}
+
+  Транскрипт:
+  {transcript}
+
+final_merge_template: |
+  Объедини промежуточные JSON-конспекты в один итоговый JSON.
+  Схема:
+  {schema}
+
+  Материалы:
+  {chunk_summaries}
